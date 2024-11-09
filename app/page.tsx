@@ -1,101 +1,118 @@
+"use client";
 import Image from "next/image";
+import Navbar from "./components/navbar";
+import { useState } from "react";
+import { log } from "console";
+
+const UserRender = {};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  let mbanner = [
+    "https://images.unidays.world/i/self-serve/content/offerbf3abf74-e113-4f44-a663-cc8830104e5c?h=450&format=webp",
+    "https://images.unidays.world/i/self-serve/content/offer98fcc9f6-0046-42a0-968d-c5732fa4a468?h=450&format=webp",
+    "https://images.unidays.world/i/self-serve/content/offer36628fdb-c30d-4fdf-8ae6-0c7b7dd5d667?h=450&format=webp",
+  ];
+  let sbanner = [
+    {
+      logo: "https://images.unidays.world/i/customers/mobile/active/e341a916-7c11-4c21-9d56-59eb3056dada?w=48&format=webp",
+      title: "Apple music Students week",
+      text: "Over 50% off on premium subscription",
+    },
+    {
+      logo: "https://images.unidays.world/i/customers/mobile/active/299e7592-6fe5-4b77-a1c0-249f30a82a44?w=96&format=webp",
+      text: "Top saving on samsung probook 6",
+      title: "Special 10% off on laptops",
+    },
+    {
+      logo: "https://images.unidays.world/i/self-serve/customer/y6ykdrOxJ0-dR3NKkSBJ5N8i-g5FCKZNm7nSbUjbv0c=/logo/png/a9e2339d-e8e6-48b8-b76a-f0281ed02d73?w=96&format=webp",
+      text: "Get 20% off on all products",
+      title: "Special offer on all products",
+    },
+  ];
+  const [banner, setBanner] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  let interval = setInterval(() => {
+    if (banner <= mbanner.length - 2) {
+      setBanner(banner + 1);
+      clearInterval(interval);
+
+    } else {
+      setBanner(0);
+      clearInterval(interval);
+
+    }
+  }, 4000);
+
+  const [secondBanner, setSecondBanner] = useState(0);
+
+  let intervalsecond = setInterval(() => {
+    if (secondBanner <= sbanner.length - 2) {
+      setSecondBanner(secondBanner + 1);
+      clearInterval(intervalsecond);
+    } else {
+      setSecondBanner(0);
+      clearInterval(intervalsecond);
+    }
+  }, 4000);
+
+  return (
+    <div className="">
+      <main>
+        <div className="sbanner p-1 bg-[#00ADB5] flex  justify-center text-white">
+          <h1>Exiting Deals at your fingertips &nbsp;</h1>
+          <p className="text-[#13139C]">Join Now</p>
+        </div>
+        <div className="container">
+          <div className=" mbanner h-[29vh] mt-8 mx-[9vw] rounded-3xl shadow-xl shadow-blue-400">
+            <img
+              src={mbanner[banner]}
+              alt="image"
+              className=" bg-contain object-cover h-[100%] w-[100%] rounded-3xl"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="flex justify-center">
+              {mbanner.map((item, index) => (
+                <div key={index} className="">
+                  <button
+                    onClick={() => {
+                      clearInterval(interval);
+                      setBanner(index)}}
+                    className={`${
+                      banner === index ? "bg-[#23488A]" : "bg-slate-50"
+                    } text-white rounded-full w-[2vw] h-[1vh] m-1`}
+                  ></button>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="sbanner flex-col justify-between items-center h-[16vh] mt-12 mx-[9vw] rounded-3xl shadow-2xl">
+            <img
+              src={sbanner[secondBanner].logo}
+              alt="image"
+              className="h-[5vh] ml-[35%] flex justify-center w-[10vh]"
+            />
+            <div className="flex justify-center font-bold text-xl">
+              <h1>{sbanner[secondBanner].title}</h1>
+            </div>
+            <p className="text-center">{sbanner[secondBanner].text}</p>
+
+            <div className="flex justify-center  font-semibold mt-4 ">
+              {mbanner.map((item, index) => (
+                
+                <div key={index} className="">
+                  <button
+                    onClick={() => {
+                      clearInterval(intervalsecond);
+                      setSecondBanner(index)}}
+                    className={`${
+                      secondBanner === index ? "bg-[#23488A]" : "bg-slate-200"
+                    } text-white rounded-full w-[2vw] h-[1vh] m-1`}
+                  ></button>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
