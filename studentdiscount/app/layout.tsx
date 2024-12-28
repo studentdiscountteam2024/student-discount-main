@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/navbar";
-
+import Footer from "./components/footer";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "./fonts/GeistVF.woff",  
   variable: "--font-geist-sans",
   weight: "100 900",
 });
@@ -30,11 +30,13 @@ export default function RootLayout({
       {/* <div className="absolute inset-0 -z-10 h-full w-full bg-[#a5c5c9] [background:radial-gradient(125%_125%_at_50%_10%,#a5c5c9_40%,#63e_90%)]"> */}
       <body
       
-        className={`rounded-lg ${geistSans.variable} ${geistMono.variable} antialiased   `}
+        className={`rounded-lg bg-[#f5f5f5] ${geistSans.variable} ${geistMono.variable} antialiased   `}
       >
         
         <Navbar />
         {children}
+     <Footer/>
+
       </body>
       {/* </div> */}
     </html>

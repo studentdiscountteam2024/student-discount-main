@@ -1,60 +1,146 @@
-"use client"
-
-export default function Footer() {
-    
-    return (
-    <footer className="fixed bottom-0 h-[6vh] bg-[#88A9AC] w-full rounded-t-xl">
-    <ul className="flex justify-between mx-2 p-1">
-      <li className="relative group">
-        <img
-          src="home.png"
-          className="h-12 hover:h-18 hover:-translate-y-10 hover:bg-[#8273BD] hover:rounded-full hover:p-2 hover:scale-125 transition-all"
-          alt=""
-        />
-        <p className="absolute top-7  mb-12 font-semibold text-center w-full opacity-0 group-hover:opacity-100 transition-opacity">
-          Home
-        </p>
-      </li>
-      <li className="relative group">
-        <img
-          src="heart.png"
-          className="h-12 hover:h-18 hover:-translate-y-10 hover:bg-[#8273BD] hover:rounded-full hover:p-2 hover:scale-125 transition-all"
-          alt=""
-        />
-        <p className="absolute top-7  mb-12 font-semibold text-center w-full opacity-0 group-hover:opacity-100 transition-opacity">
-          Saved offers
-        </p>
-      </li>
-      <li className="relative group">
-        <img
-          src="location.png"
-          className="h-12 hover:h-18 hover:-translate-y-10 hover:bg-[#8273BD] hover:rounded-full hover:p-2 hover:scale-125 transition-all"
-          alt=""
-        />
-        <p className="absolute top-7  mb-12 font-semibold text-center w-full opacity-0 group-hover:opacity-100 transition-opacity">
-          Location
-        </p>
-      </li>
-      <li className="relative group">
-        <img
-          src="offers.svg"
-          className="h-12 hover:h-18 hover:-translate-y-10 hover:bg-[#8273BD] hover:rounded-full hover:p-2 hover:scale-125 transition-all"
-          alt=""
-        />
-        <p className="absolute top-7  mb-12 font-semibold text-center w-full opacity-0 group-hover:opacity-100 transition-opacity">
-          Festival offers
-        </p>
-      </li>
-      <li className="relative group">
-        <img
-          src="profile.png"
-          className="h-12   fhover:h-18 hover:-translate-y-10 hover:bg-[#8273BD] hover:rounded-full hover:p-2 hover:scale-125 transition-all"
-          alt=""
-        />
-        <p className="absolute top-7  mb-12 font-semibold text-center w-full opacity-0 group-hover:opacity-100 transition-opacity">
-          Profile
-        </p>
-      </li>
-    </ul>
-  </footer>
-)};
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+const Footer: React.FC = () => {
+  const path = usePathname();
+  return (
+    <footer className="fixed bottom-0 h-[6vh] bg-[#] w-full z-10 rounded-t-xl bg-white">
+      <ul className="flex justify-between mx-3 my-1 p-1">
+        <Link href={"/"}>
+          <li
+            className={`relative group   rounded-xl ${
+              path == "/" ? " shadow-lg" : "none"
+            }`}
+          >
+            <svg
+              width="34"
+              height="36"
+              viewBox="0 0 34 36"
+              fill={path == "/" ? "black" : "none"}
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M28.2742 16.3125L26.0312 13.8673V7.875C26.0312 6.94687 25.3352 6.1875 24.4844 6.1875H22.9375C22.0867 6.1875 21.3906 6.94687 21.3906 7.875V8.80819L18.2969 5.43656C17.8746 5.00119 17.4879 4.5 16.75 4.5C16.0121 4.5 15.6254 5.00119 15.2031 5.43656L5.22578 16.3125C4.74316 16.8609 4.375 17.2609 4.375 18C4.375 18.9501 5.04325 19.6875 5.92188 19.6875H7.46875V29.8125C7.46875 30.7406 8.16484 31.5 9.01562 31.5H12.1094C12.9637 31.5 13.6562 30.7445 13.6562 29.8125V23.0625C13.6562 22.1344 14.3523 21.375 15.2031 21.375H18.2969C19.1477 21.375 19.8438 22.1344 19.8438 23.0625V29.8125C19.8438 30.7445 19.7629 31.5 20.6172 31.5H24.4844C25.3352 31.5 26.0312 30.7406 26.0312 29.8125V19.6875H27.5781C28.4568 19.6875 29.125 18.9501 29.125 18C29.125 17.2609 28.7568 16.8609 28.2742 16.3125Z"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </li>
+        </Link>
+        <Link href={"/favourite"}>
+          <li
+            className={`relative group   rounded-xl ${
+              path == "/favourite" ? " shadow-lg" : "none"
+            }`}
+          >
+            {path == "/favourite" ? (
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                className="bi bi-heart-fill"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+                />
+              </svg>
+              
+            
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32" fill="#000000"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+            )}
+            
+          </li>
+        </Link>
+        <Link href={"/nearbydiscounts"}>
+          <li
+            className={`relative group   rounded-xl ${
+              path == "/nearbydiscounts" ? " shadow-lg" : "none"
+            }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              id="location"
+              fill="none"
+            >
+              <g
+                fill="none"
+                fill-rule="evenodd"
+                stroke="#200E32"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width={path == "/nearbydiscounts" ? "2.5" : "1.5"}
+                transform="translate(3.5 2)"
+              >
+                <path d="M0.739130438,8.39130439 C0.753537867,4.15071799 4.2028919,0.72472301 8.4434783,0.739085164 C12.6840647,0.753537867 16.1100597,4.2028919 16.0956975,8.4434783 L16.0956975,8.53043483 C16.0434783,11.2869566 14.5043479,13.8347827 12.6173914,15.826087 C11.5382412,16.9467164 10.3331375,17.9388114 9.026087,18.7826088 C8.67659293,19.0849173 8.15818976,19.0849173 7.80869569,18.7826088 C5.86019813,17.5143538 4.15006533,15.9131279 2.75652175,14.052174 C1.51448066,12.4293903 0.809295599,10.4597355 0.739130438,8.41739135 L0.739130438,8.39130439 Z"></path>
+                <circle cx="8.417" cy="8.539" r="2.461"></circle>
+              </g>
+            </svg>
+          </li>
+        </Link>
+        <Link href="/offers">
+          <li
+            className={`relative group  rounded-xl ${
+              path == "/offers" ? " shadow-lg" : "none"
+            }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="none"
+              viewBox="0 0 64 64"
+              id="offers"
+            >
+              <path
+                stroke="black"
+                stroke-width={path == "/offers" ? "6" : "3"}
+                d="M46.2901 15.43L47.2901 18.43C47.5816 19.3797 48.1839 20.2038 49.0001 20.77L51.5301 22.47C52.3795 23.0401 53.0076 23.8842 53.3097 24.8615C53.6118 25.8388 53.5696 26.8901 53.1901 27.84L52.1901 30.27C51.7548 31.3443 51.7548 32.5458 52.1901 33.62L53.1901 35.99C53.5687 36.9208 53.6227 37.952 53.3433 38.9173C53.0639 39.8825 52.4674 40.7254 51.6501 41.31L49.4001 42.92C48.5754 43.5062 47.9756 44.3565 47.7001 45.33L46.8901 48.17C46.6081 49.1671 45.9877 50.0348 45.1355 50.6242C44.2833 51.2136 43.2525 51.4879 42.2201 51.4L39.7901 51.2C38.6401 51.1045 37.4984 51.4635 36.6101 52.2L34.2701 54.09C33.4723 54.7406 32.4745 55.0959 31.4451 55.0959C30.4157 55.0959 29.4179 54.7406 28.6201 54.09L26.6201 52.45C25.8184 51.7968 24.8142 51.4432 23.7801 51.45H20.2701C19.26 51.4526 18.279 51.1115 17.4885 50.4827C16.6979 49.8539 16.1448 48.9748 15.9201 47.99L15.2801 45.27C15.0299 44.1725 14.3722 43.211 13.4401 42.58L11.2901 41C10.4763 40.4465 9.86906 39.6388 9.56327 38.7033C9.25747 37.7678 9.27043 36.7574 9.6001 35.83L10.6001 33.09C10.9701 32.0933 10.9701 30.9968 10.6001 30L9.7001 27.6C9.34021 26.6468 9.31758 25.599 9.63597 24.6311C9.95436 23.6632 10.5946 22.8335 11.4501 22.28L13.8201 20.75C14.7364 20.1574 15.4049 19.2506 15.7001 18.2L16.4001 15.68C16.6806 14.6766 17.3027 13.8028 18.1591 13.2093C19.0154 12.6159 20.0521 12.3403 21.0901 12.43L23.3301 12.62C24.4826 12.7108 25.6256 12.3525 26.5201 11.62L28.6501 9.90003C29.4502 9.24613 30.4518 8.88892 31.4851 8.88892C32.5184 8.88892 33.52 9.24613 34.3201 9.90003L36.1801 11.46C37.0746 12.1997 38.2236 12.5588 39.3801 12.46L41.7301 12.29C42.7324 12.225 43.7275 12.4994 44.5548 13.0691C45.382 13.6387 45.9933 14.4704 46.2901 15.43V15.43Z"
+              ></path>
+              <path
+                stroke="black"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width={path == "/offers" ? "4" : "2"}
+                d="M25.8901 27.8501C27.9722 27.8501 29.6601 26.1622 29.6601 24.0801 29.6601 21.9979 27.9722 20.3101 25.8901 20.3101 23.808 20.3101 22.1201 21.9979 22.1201 24.0801 22.1201 26.1622 23.808 27.8501 25.8901 27.8501zM37.3901 43.6899C39.4722 43.6899 41.1601 42.002 41.1601 39.9199 41.1601 37.8378 39.4722 36.1499 37.3901 36.1499 35.308 36.1499 33.6201 37.8378 33.6201 39.9199 33.6201 42.002 35.308 43.6899 37.3901 43.6899zM41.16 22.1899L21.3 42.0599"
+              ></path>
+            </svg>
+          </li>
+        </Link>
+        <Link href={"/profile"}>
+        <li
+          className={`relative group   rounded-xl ${
+            path == "/profile" ? " shadow-lg" : "none"
+          }`}
+        >
+          <svg
+            width="37"
+            height="36"
+            viewBox="0 0 37 36"
+            fill={path == "/profile" ? "black" : "none"}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.69141 30.7687C3.69141 25.1054 8.42283 20.5144 18.0914 20.5144C27.76 20.5144 32.4914 25.1054 32.4914 30.7687C32.4914 31.6697 31.8341 32.4001 31.0232 32.4001H5.15964C4.34876 32.4001 3.69141 31.6697 3.69141 30.7687Z"
+              stroke="black"
+              stroke-width="2"
+            />
+            <path
+              d="M23.4914 9.0001C23.4914 11.9824 21.0737 14.4001 18.0914 14.4001C15.1091 14.4001 12.6914 11.9824 12.6914 9.0001C12.6914 6.01776 15.1091 3.6001 18.0914 3.6001C21.0737 3.6001 23.4914 6.01776 23.4914 9.0001Z"
+              stroke="black"
+              stroke-width="2"
+            />
+          </svg>
+        </li>
+        </Link>
+      </ul>
+    </footer>
+  );
+};
+export default Footer;

@@ -52,10 +52,9 @@ const page = () => {
               <img src={item.logo} className="h-10 w-full flex justify-center" alt="" />
               <p className="font-bold h-10 text-center">{item.text}</p>
               <button className=" border-blue-600 border-2 sticky ml-3 mt-1 w-[18vw] p-1 font-semibold rounded-lg bg-slate-50 text-sm">
-                Get Now
+                Get Offer
               </button>
               </div>
-              
               
             </div>
           </div>

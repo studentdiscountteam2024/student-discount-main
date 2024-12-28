@@ -1,40 +1,37 @@
+"use client"
 import React from "react";
+import Link from "next/link";
+
 
 const page = () => {
+  const handlepass = () => {
+
+  }
   return (
-    <div>
-      <div className="details flex items-center justify-center mt-24">
+    <div className=" mx-6 mt-28 h-[70vh]  border-cyan-500 rounded-2xl bg-white shadow-lg border-2 ">
+      <div className="details flex items-center justify-center mt-7">
         <div className="w-[30vw] ">
           <img
             className="h-[13vh] rounded-full hover:opacity-50"
             src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/50dab922-5d48-4c6b-8725-7fd0755d9334/3a3f2d35-8167-4708-9ef0-bdaa980989f9.png"
             alt="profie img"
           />
-          <p className=" flex justify-center opacity-80 mt-2">Edit Profile</p>
         </div>
       </div>
-      <div className="inputdetails mt-10  h-[45vh] mx-10 flex-col justify-between space-y-4">
-        <div className="name  h-[5.5vh] flex justify-center bg-white mx-2 rounded-lg ">
+      <div className="inputdetails mt-10  h-[45vh] mx-4 flex-col justify-between space-y-4">
           <input
             type="text"
             name=""
             placeholder="Name"
             id=""
-            className="w-full h-[5.5vh] ml-2 mr-2"
+            className="w-full h-[5.5vh] p-2 border "
           />
-        </div>
-        <div className="gmail  h-[5.5vh] flex justify-center bg-white mx-2 rounded-lg">
-          <input type="text" placeholder="Gmail"  className="w-full h-[5.5vh] ml-2 mr-2"/>
-        </div>
-        <div className="phoneNo  h-[5.5vh] flex justify-center bg-white mx-2 rounded-lg ">
-          <input type="text" placeholder="Phone no" className="w-full h-[5.5vh] ml-2 mr-2" />
-        </div>
-        <div className="passgen flex  items-center  justify-between mr-6">
-          <div className="DOB h-[5.5vh] flex justify-center items-center m-2 p-2 rounded-xl bg-white ">
-            <input type="date" name="" id="" className="w-full h-[5.5vh] bg-transparent " />
-          </div>
-          <div className="gender flex w-[20vw] justify-between space-x-2">
-            <div className="bg-white p-3 rounded-full active:bg-blue-500 ">
+          <input type="text" placeholder="Gmail"  className="w-full h-[5.5vh]  p-2 border "/>
+          <input type="text" placeholder="Phone no" className="w-full h-[5.5vh]  p-2 border" />
+        <div className="passgen flex  justify-between  ">
+            <input type="date" name="" id="" className=" rounded-sm p-1 h-[5.5vh] bg-transparent "/>
+          <div className="gender flex w-[20vw] justify-between space-x-2 mr-4">
+            <div className=" p-3 rounded-full hover:bg-blue-500 ">
               <svg
                 width="23"
                 height="23"
@@ -49,7 +46,7 @@ const page = () => {
                 />
               </svg>
             </div>
-            <div className="bg-white p-3 rounded-full active:bg-pink-400">
+            <div className=" p-3 rounded-full hover:bg-pink-400">
               <svg
                 width="21"
                 height="24"
@@ -66,13 +63,18 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="password p-2 bg-purple-500 w-[40%] mx-2 rounded-xl text-white">
+        <div className="password p-2 bg-green-600 w-[35vw] h-[10%]  rounded-lg text-white font-medium " onClick={()=>{handlepass()}}>
             <button>Show Password</button>
         </div>
         
-        <div className="flex justify-center">
-        <button className="absolute bottom-20 p-3 font-semibold bg-blue-500 rounded-lg text-white">Save Details</button>
-
+        <div className="flex justify-center ">
+        <Link href={"/profile"}>
+        <button className=" mt-10 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium  rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+          <span className=" relative px-5 py-2.5 transition-all ease-in duration-75 bg-white text-black font-semibold text-md rounded-md group-hover:bg-opacity-0">
+            Save Details
+          </span>
+        </button>
+        </Link>
         </div>
       </div>
     </div>

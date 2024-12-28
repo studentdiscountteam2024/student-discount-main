@@ -24,16 +24,15 @@ const page = () => {
   ];
   return (
     <div>
-      <div className="body flex flex-wrap gap-8 mx-4 mt-28  basis-1">
+      <div className="body flex flex-wrap gap-7 mx-4 mt-28  basis-1">
         {data.map((item, index) => (
           <div key={index} className="">
             <Link href={`/company/${item.text}`}>
             <div className="h-[20vh] w-[42vw]  rounded-2xl shadow-lg bg-white">
               <img src={item.logo} className="rounded-t-2xl flex justify-center " alt="" />
-              <div className="w-full ">
-                
+              <div className="w-full ">              
                 <p className="font-bold h-10 text-3xl text-center">{item.text}</p>
-               
+                
               </div>
             </div>
             </Link>
